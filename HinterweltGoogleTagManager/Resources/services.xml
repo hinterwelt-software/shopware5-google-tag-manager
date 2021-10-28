@@ -1,0 +1,41 @@
+<container
+        xmlns="http://symfony.com/schema/dic/services"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd"
+>
+    <services>
+
+        <service
+                id="hinterwelt_google_tag_manager.components.config_provider"
+                class="HinterweltGoogleTagManager\Components\ConfigProvider"
+        >
+            <argument>%hinterwelt_google_tag_manager.plugin_name%</argument>
+            <argument type="service" id="shopware.plugin.cached_config_reader"/>
+            <argument type="service" id="hinterwelt_google_tag_manager.components.shop_provider"/>
+        </service>
+
+        <service
+                id="hinterwelt_google_tag_manager.components.shop_provider"
+                class="HinterweltGoogleTagManager\Components\ShopProvider"
+        >
+        </service>
+
+        <service
+                id="hinterwelt_google_tag_manager.subscriber.frontend_subscriber"
+                class="HinterweltGoogleTagManager\Subscriber\FrontendSubscriber"
+        >
+            <argument type="service" id="hinterwelt_google_tag_manager.components.config_provider"/>
+            <tag name="shopware.event_subscriber"/>
+        </service>
+
+        <service
+                id="hinterwelt_google_tag_manager.subscriber.template_compiler"
+                class="HinterweltGoogleTagManager\Subscriber\TemplateCompiler"
+        >
+            <argument>%hinterwelt_google_tag_manager.plugin_dir%</argument>
+            <argument type="service" id="template"/>
+            <tag name="shopware.event_subscriber"/>
+        </service>
+
+    </services>
+</container>

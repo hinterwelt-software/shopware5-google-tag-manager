@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/shopware/5.3/engine/Shopware/Components/Plugin/schema/config.xsd"
+>
+    <elements>
+        <element required="true" scope="shop" type="text">
+            <name>hinterwelt_gtm_id</name>
+            <label lang="de">Google Tag Manager ID</label>
+            <label lang="en">Google Tag Manager ID</label>
+            <value></value>
+        </element>
+    </elements>
+</config>
